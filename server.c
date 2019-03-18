@@ -1,23 +1,18 @@
 // Server side C/C++ program to demonstrate Socket programming 
 
 #include <unistd.h> 
-
 #include <stdio.h> 
-
 #include <sys/socket.h> 
-
 #include <stdlib.h> 
-
 #include <netinet/in.h> 
-
 #include <string.h> 
-
 #define PORT 8080 
 
 int main(int argc, char const *argv[]) 
 
-{ 
-
+{ 	
+	setbuf(stdout,NULL);
+	printf("Creating socket..");
 	int server_fd, new_socket, valread; 
 
 	struct sockaddr_in address; 
@@ -28,10 +23,9 @@ int main(int argc, char const *argv[])
 
 	char buffer[1024] = {0}; 
 
-	char *hello = "Hello from server"; 
+	char *hello = "     Bonjour!"; 
 
 	
-
 	// Creating socket file descriptor 
 
 	if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0) 
@@ -57,12 +51,9 @@ int main(int argc, char const *argv[])
 
 	
 
-	// Forcefully attaching socket to the port 8080 
+    // Forcefully attaching socket to the port 8080 
 
-	if (bind(server_fd, (struct sockaddr *)&address,  
-
-                                 sizeof(address))<0) 
-
+    if (bind(server_fd, (struct sockaddr *)&address,sizeof(address))<0) 
     { 
 
         perror("bind failed"); 
@@ -70,7 +61,8 @@ int main(int argc, char const *argv[])
         exit(EXIT_FAILURE); 
 
     } 
-
+    
+    
     if (listen(server_fd, 3) < 0) 
 
     { 
@@ -81,9 +73,7 @@ int main(int argc, char const *argv[])
 
     } 
 
-    if ((new_socket = accept(server_fd, (struct sockaddr *)&address,  
-
-                       (socklen_t*)&addrlen))<0) 
+    if ((new_socket = accept(server_fd, (struct sockaddr *)&address, (socklen_t*)&addrlen))<0) 
 
     { 
 
