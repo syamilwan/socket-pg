@@ -20,19 +20,22 @@ public class client {
 
         Socket sock = new Socket(HOSTNAME, PORT_NUMBER);
 
-            PrintWriter out = new PrintWriter(sock.getOutputStream(), 
-true);
+        PrintWriter out = new PrintWriter(sock.getOutputStream(),true);
+        BufferedReader in = new BufferedReader(new 
+InputStreamReader(sock.getInputStream()));
 
-        //Output
+        
+	//Output to server
 
         out.println("\n\t\tBonjour");
 
         out.flush();
 
-
+	System.out.println("\nFrom server: " + in.readLine());
+	System.out.println("\nSession terminated\n");
 
         out.close();
-
+	in.close();
         sock.close();
 
     } catch(Exception e) {
