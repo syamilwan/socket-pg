@@ -1,8 +1,6 @@
 import java.io.*;
-
 import java.net.*;
-
-
+import java.util.Scanner; 
 
 public class client {
 
@@ -11,8 +9,8 @@ public class client {
     final int PORT_NUMBER = 8080;
 
     final String HOSTNAME = "192.168.159.129";
-
-
+    
+ System.out.println("*****************************************************");    
 
     //Attempt to connect
 
@@ -21,18 +19,16 @@ public class client {
         Socket sock = new Socket(HOSTNAME, PORT_NUMBER);
 
         PrintWriter out = new PrintWriter(sock.getOutputStream(),true);
-        BufferedReader in = new BufferedReader(new 
-InputStreamReader(sock.getInputStream()));
-
+        BufferedReader in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+	
+	System.out.println("\n\t***Connected to socket\n\n");
         
 	//Output to server
+        out.println("\n\n\n\t\tBonjour (from client)");
+	out.flush();
 
-        out.println("\n\t\tBonjour");
-
-        out.flush();
-
-	System.out.println("\nFrom server: " + in.readLine());
-	System.out.println("\nSession terminated\n");
+	System.out.println("\t\t"+in.readLine());
+	System.out.println("\n\n\t***Disconnected from socket\n");
 
         out.close();
 	in.close();
@@ -43,7 +39,9 @@ InputStreamReader(sock.getInputStream()));
         e.printStackTrace();
 
     }
-
+	
+      
+System.out.println("*****************************************************\n\n\n");
     }
 
 }
