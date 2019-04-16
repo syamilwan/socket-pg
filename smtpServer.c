@@ -4,7 +4,7 @@
 #include <stdlib.h> 
 #include <netinet/in.h> 
 #include <string.h> 
-#define PORT 25
+#define PORT 999
 
 int main(int argc, char const *argv[]){ 	
 	setbuf(stdout,NULL);
@@ -27,7 +27,7 @@ int main(int argc, char const *argv[]){
 	address.sin_addr.s_addr = INADDR_ANY; 
 	address.sin_port = htons( PORT ); 
 
-	printf("\t***Server socket open");
+	printf("\t***Server socket open\n\n");
 
 	// Forcefully attaching socket to the port 25
 	if (bind(server_fd, (struct sockaddr *)&address,sizeof(address))<0) { 
