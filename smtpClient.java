@@ -5,9 +5,9 @@ import java.util.Scanner;
 public class smtpClient {
 
     public static void main(String[] args) throws IOException {
-    final int PORT_NUMBER = 25;
-    final String HOSTNAME = "192.168.59.71";
-    bool stop = false;
+    final int PORT_NUMBER = 999;
+    final String HOSTNAME = "192.168.59.72";
+    boolean stop = false;
     //Attempt to connect
     try {
         Socket sock = new Socket(HOSTNAME, PORT_NUMBER);
