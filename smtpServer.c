@@ -17,7 +17,7 @@ int main(int argc, char const *argv[]){
 	int addrlen = sizeof(address); 
 	char buffer[1024] = {0}; 
 	char *hello = "Msg from Server: \nConnected"; 
-	char recv_data[MAX];
+	char *recv_data;
 
 	// Creating socket file descriptor 
 	if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0) { 
@@ -53,7 +53,7 @@ int main(int argc, char const *argv[]){
 		//Read from client
 		int data;
 		memset(recv_data, 0, sizeof(recv_data));
-		if(recv(connfd, recv_data, sizeof(recv_data), 0) < 0){
+		if(recv(server_fd, recv_data, sizeof(recv_data), 0) < 0){
 			printf("No message received!!!\n");
 			exit(1);
 		}
