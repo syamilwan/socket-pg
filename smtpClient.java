@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class smtpClient {
     public static void main(String[] args) throws IOException {
     final int PORT_NUMBER = 999;
-    final String HOSTNAME = "192.168.59.72";
+    final String HOSTNAME = "192.168.43.4";
     char newEmail;	    
     boolean stop = false;
     	//Attempt to connect
