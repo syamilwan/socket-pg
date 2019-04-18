@@ -12,19 +12,24 @@ public class client {
     try {
         Socket sock = new Socket(HOSTNAME, PORT_NUMBER);
         PrintWriter out = new PrintWriter(sock.getOutputStream(),true);
-        BufferedReader in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+        //BufferedReader in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
 	
-	System.out.println("\n\t***Connected to socket\n\n");
+	System.out.println("\n\tSession Start\n\n");
         
-	      //Output to server
-        out.println("\nEnter email address");
-	      out.flush();
+	//Output to server
+        System.out.println("\nRecipient: ");
+	out.print(out.readLine());
+	System.out.println("\nTitle: ");
+	out.print(out.readLine());
+	System.out.println("\nMessages: ");
+	out.print(out.readLine());
+	out.flush();
         
-	      System.out.println("\t\t"+in.readLine());
-	      System.out.println("\n\n\t***Disconnected from socket\n");
+	//System.out.println("\t\t"+in.readLine());
+	System.out.println("\n\n\tSession End\n");
         
         out.close();
-	      in.close();
+	in.close();
         sock.close();
         
         } 
