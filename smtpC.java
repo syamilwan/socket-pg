@@ -14,7 +14,7 @@ public class client {
         PrintWriter out = new PrintWriter(sock.getOutputStream(),true);
         BufferedReader in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
 	
-	      System.out.println("\n\t***Connected to socket\n\n");
+	System.out.println("\n\t***Connected to socket\n\n");
         
 	      //Output to server
         out.println("\nEnter email address");
