@@ -12,11 +12,12 @@ public class smtpClient {
 	try {
 		Socket sock = new Socket(HOSTNAME, PORT_NUMBER);
 		Scanner input = new Scanner(System.in);
-		PrintWriter output = new PrintWriter(sock.getOutputStream(),true);
+		
 		//BufferedReader in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
 		System.out.println("\n\nConnected\n");
 		
-		do{	
+		while(stop==false){	
+			PrintWriter output = new PrintWriter(sock.getOutputStream(),true);
 			//prompt user input
 			System.out.print("\nRecipient: ");
 			String recipient = (";"+input.next());
@@ -34,7 +35,7 @@ public class smtpClient {
 		   	System.out.println("\nSend another Email? (Y/N)");
 			newEmail= input.next().charAt(0);
 			if(newEmail == 'N' || newEmail == 'n')	stop = true;
-		}while(stop==false);
+		}
 
 		System.out.println("\n\nDisconnected\n");
 
