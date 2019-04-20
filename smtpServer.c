@@ -92,7 +92,7 @@ int main(){
 			do{
 			    if(recv_data[i]!=';'){
 				    printf("%c",recv_data[i]);
-				    recipient[j] = recv_data[i];
+				    message[j] = recv_data[i];
 				    i++,j++;
 			    }
 			    else
