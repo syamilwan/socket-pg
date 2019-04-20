@@ -25,6 +25,7 @@ public class smtpClient {
 			output.println(input.next());
 			
 			output.flush();
+		   	output.close();
 			//prompt stop
 		   	System.out.println("\nSend another Email? (Y/N)");
 			newEmail= input.next().charAt(0);
@@ -35,7 +36,6 @@ public class smtpClient {
 		//System.out.println("\t\t"+in.readLine());
 		System.out.println("\n\nDisconnected\n");
 
-		output.close();
 		//in.close();
 		sock.close();
 	    } 
