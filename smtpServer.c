@@ -4,6 +4,8 @@
 #include <stdlib.h> 
 #include <netinet/in.h> 
 #include <string.h> 
+#include <time.h>
+
 #define PORT 999
 
 int main(int argc, char const *argv[]){ 	
@@ -14,7 +16,8 @@ int main(int argc, char const *argv[]){
 	int opt = 1; 
 	int addrlen = sizeof(address); 
 	char buffer[1024] = {0}; 
-	char *hello = "Server up"; 
+	char *hello = "Msg from Server: \nConnected"; 
+	char recv_data[MAX];
 
 	// Creating socket file descriptor 
 	if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0) { 
@@ -44,14 +47,26 @@ int main(int argc, char const *argv[]){
 	     perror("accept"); 
 	     exit(EXIT_FAILURE); 
 	} 
+	send(new_socket , hello , strlen(hello) , 0 ); 
 	
-	valread = read(new_socket , buffer, 1024); 
+	for(;;){
+		//Read from client
+		int data;
+		memset(recv_data, 0, sizeof(recv_data));
+		if(recv(connfd, recv_data, sizeof(recv_data), 0) < 0){
+			printf("No message received!!!\n");
+			exit(1);
+		}
+		else{
+			//Print message from client
+			printf("\nRecevied : %s", recv_data);
+		}
+
+	}	
+	//valread = read(new_socket , buffer, 1024); 
 	
 	printf("%s\n",buffer); 
-	printf("\n\t***Server socket closed\n\n");
-	printf("*****************************************************\n\n\n");	
+	printf("\n\t***Server socket closed\n\n");	
 	
 	//send(new_socket , hello , strlen(hello) , 0 ); 
-
-	return 0; 
 }
