@@ -11,18 +11,18 @@ public class smtpClient {
     	//Attempt to connect
 	try {
 		Socket sock = new Socket(HOSTNAME, PORT_NUMBER);
-		PrintWriter out = new PrintWriter(sock.getOutputStream(),true);
+		PrintWriter output = new PrintWriter(sock.getOutputStream(),true);
 		Scanner input = new Scanner(System.in);
 		//BufferedReader in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
 		System.out.println("\n\nConnected\n");
 		do{	//Output to server
 			System.out.print("\nRecipient: ");
-			out.println(input.next());
+			output.println(input.next());
 			System.out.print("\nTitle: ");
-			out.println(input.next());
+			output.println(input.next());
 			System.out.print("\nMessages: ");
-			out.println(input.next());
-			out.flush();
+			output.println(input.next());
+			output.flush();
 			//prompt stop
 		   	System.out.println("\nSend another Email? (Y/N)");
 			newEmail= input.next().charAt(0);
@@ -33,7 +33,7 @@ public class smtpClient {
 		//System.out.println("\t\t"+in.readLine());
 		System.out.println("\n\nDisconnected\n");
 
-		out.close();
+		output.close();
 		//in.close();
 		sock.close();
 	    } 
