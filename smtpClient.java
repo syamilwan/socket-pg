@@ -14,14 +14,16 @@ public class smtpClient {
 		Scanner input = new Scanner(System.in);
 		//BufferedReader in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
 		System.out.println("\n\nConnected\n");
-		do{	//Output to server
+		
+		do{	PrintWriter output = new PrintWriter(sock.getOutputStream(),true);
+			//Output to server
 			System.out.print("\nRecipient: ");
 			output.println(input.next());
 			System.out.print("\nTitle: ");
 			output.println(input.next());
 			System.out.print("\nMessages: ");
 			output.println(input.next());
-			PrintWriter output = new PrintWriter(sock.getOutputStream(),true);
+			
 			output.flush();
 			//prompt stop
 		   	System.out.println("\nSend another Email? (Y/N)");
