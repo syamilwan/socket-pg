@@ -66,9 +66,10 @@ int main(){
 			char filename[MAX], content[MAX], recipient[MAX], title[MAX], message[MAX];
 			int i=0, j=0;
 			bool stop=false;
+			printf("\nRecipient: ");
 			do{
 			    if(recv_data[i]!='.'){
-				    printf("Recipient: %c",recv_data[i]);
+				    printf("%c",recv_data[i]);
 				    recipient[j] = recv_data[i];
 				    i++,j++;
 			    }
@@ -76,21 +77,21 @@ int main(){
 				    stop=true;
 			}while(stop==false);
 				
-			printf("\n");j=0;stop=false;
+			printf("\nTitle: ");j=0;stop=false;
 			do{
 			    if(recv_data[i]!=','){
-				    printf("Recipient: %c",recv_data[i]);
-				    recipient[j] = recv_data[i];
+				    printf("%c",recv_data[i]);
+				    title[j] = recv_data[i];
 				    i++,j++;
 			    }
 			    else
 				    stop=true;
 			}while(stop==false);
 			
-			printf("\n");j=0;stop=false;
+			printf("\nMessage: ");j=0;stop=false;
 			do{
 			    if(recv_data[i]!=';'){
-				    printf("Recipient: %c",recv_data[i]);
+				    printf("%c",recv_data[i]);
 				    recipient[j] = recv_data[i];
 				    i++,j++;
 			    }
