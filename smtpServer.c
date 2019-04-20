@@ -51,19 +51,17 @@ int main(){
 		exit(1);
 	}
 			
-		for(;;){
+	for(;;){
 		//Read from client
-		int data;
-		memset(buffer, 0, sizeof(buffer));
-		if(recv(server_fd, buffer, sizeof(buffer), 0) < 0){
+		memset(recv_data, 0, sizeof(recv_data));
+		if(recv(connfd, recv_data, sizeof(recv_data), 0) < 0){
 			printf("No message received!!!\n");
 			exit(1);
 		}
 		else{
 			//Print message from client
-			printf("\nRecevied : %s", buffer);
+			printf("\nFrom client: %s", recv_data);
 		}
-
 	}
 	printf("\nClosing connection....\n");
 	close(sockfd);
