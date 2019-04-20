@@ -18,21 +18,24 @@ public class smtpClient {
 		do{	PrintWriter output = new PrintWriter(sock.getOutputStream(),true);
 			//Output to server
 			System.out.print("\nRecipient: ");
-			String recipient = ("\n "+input.next());
+			String recipient = (";"+input.next());
 			System.out.print("\nTitle: ");
-			String title = ("\n "+input.next());
+			String title = (";"+input.next());
 			System.out.print("\nMessages: ");
-			String message = ("\n "+input.next());
+			String message = (";"+input.next());
 			
 		   	output.println(recipient + title + message);
 			output.flush();
 		   	output.close();
+		   
 			//prompt stop
 		   	System.out.println("\nSend another Email? (Y/N)");
 			newEmail= input.next().charAt(0);
-			if(newEmail == 'N' || newEmail == 'n'){
-				stop = true;}
-		}while(stop!=true);
+			if(newEmail == 'Y' || newEmail == 'y')
+				stop = false;
+		   	else
+				stop = true;
+		}while(stop==false);
 
 		//System.out.println("\t\t"+in.readLine());
 		System.out.println("\n\nDisconnected\n");
