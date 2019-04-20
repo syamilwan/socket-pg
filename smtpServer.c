@@ -63,7 +63,7 @@ int main(){
 			printf("\nFrom client: %s", recv_data);
 			
 			//inserting data into a new file
-			char filename[MAX], recipient[MAX], title[MAX], message[MAX];
+			char filename[MAX], content[MAX], recipient[MAX], title[MAX], message[MAX];
 			int i=0, j=0;
 			bool stop=false;
 			do{
@@ -98,8 +98,17 @@ int main(){
 				    stop=true;
 			}while(stop==false);
 			printf("\n");
+			
+			//combine and sort strings
 			strcat(filename,recipient);
 			strcat(filename,title);
+			
+			strcat(content,recipient);
+			strcat(content,";");
+			strcat(content,title);
+			strcat(content,";");
+			strcat(content,message);
+			strcat(content,";");
 			//creating new file and writes into it
 			fp = fopen("filename", "w");
 			fprintf(fp, recipient+";"+title+";"+message);
