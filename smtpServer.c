@@ -1,54 +1,57 @@
-#include <unistd.h> 
-#include <stdio.h> 
-#include <sys/socket.h> 
-#include <stdlib.h> 
-#include <netinet/in.h> 
-#include <string.h> 
-#include <time.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <sys/socket.h>
+#include <sys/types.h>
+#include <arpa/inet.h>
+#include <netinet/in.h>
+#include <unistd.h>
 
+#define MAX 100
 #define PORT 999
 
-int main(int argc, char const *argv[]){ 	
-	setbuf(stdout,NULL);
+int main(){
+	int sockfd, connfd, msg_size;
+	struct sockaddr_in server, client;
+	char send_data[MAX];
+	char recv_data[MAX];	
 
-	int server_fd, new_socket, valread; 
-	struct sockaddr_in address; 
-	int opt = 1; 
-	int addrlen = sizeof(address); 
-	char buffer[1024] = {0}; 
-	char *hello = "Msg from Server: \nConnected"; 
+	//Create socket for connection
+	sockfd = socket(AF_INET, SOCK_STREAM, 0);
+	if(sockfd == -1){	
+		printf("Socket creation failed!!!\n");
+		exit(1);
+	}
+		
+	//Assign IP and PORT
+	memset(&server, 0, sizeof(server));
+	server.sin_family = AF_INET;
+	server.sin_addr.s_addr = inet_addr("192.168.182.128");
+	server.sin_port = htons(PORT);
+	 
+	//Binding socket
+	if((bind(sockfd, (struct sockaddr*)&server, sizeof(server))) != 0){
+		printf("Socket bind failed!!!\n");
+		exit(1);
+	}
 
-	// Creating socket file descriptor 
-	if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0) { 
-		perror("socket failed");
-		exit(EXIT_FAILURE);
-	} 
-
-	// Forcefully attaching socket to the port 25
-	address.sin_family = AF_INET; 
-	address.sin_addr.s_addr = INADDR_ANY; 
-	address.sin_port = htons( PORT ); 
-
-	printf("\t***Server socket open\n\n");
-
-	// Forcefully attaching socket to the port 25
-	if (bind(server_fd, (struct sockaddr *)&address,sizeof(address))<0) { 
-	   perror("bind failed"); 
-	   exit(EXIT_FAILURE); 
-	} 
+	//Server listen to the connection
+	if((listen(sockfd, 3)) != 0){
+		printf("Connection failed!!!\n");
+		exit(1);
+	}
 	
-	if (listen(server_fd, 3) < 0) { 
-	     perror("listen"); 
-	     exit(EXIT_FAILURE); 
-	} 
+	msg_size = sizeof(client);
 
-	if ((new_socket = accept(server_fd, (struct sockaddr *)&address, (socklen_t*)&addrlen))<0) { 
-	     perror("accept"); 
-	     exit(EXIT_FAILURE); 
-	} 
-	send(new_socket , hello , strlen(hello) , 0 ); 
-	
-	for(;;){
+	//Accept data from client	
+	connfd = accept(sockfd, (struct sockaddr*)&client, &msg_size);
+
+	if(connfd < 0){
+		printf("\nConnection failed!!!\n");
+		exit(1);
+	}
+			
+		for(;;){
 		//Read from client
 		int data;
 		memset(buffer, 0, sizeof(buffer));
@@ -61,11 +64,9 @@ int main(int argc, char const *argv[]){
 			printf("\nRecevied : %s", buffer);
 		}
 
-	}	
-	//valread = read(new_socket , buffer, 1024); 
-	
-	printf("%s\n",buffer); 
-	printf("\n\t***Server socket closed\n\n");	
-	
-	//send(new_socket , hello , strlen(hello) , 0 ); 
+	}
+	printf("\nClosing connection....\n");
+	close(sockfd);
+
+	return 0;
 }
