@@ -17,7 +17,6 @@ public class smtpClient {
 		System.out.println("\n\nConnected\n");
 		
 		while(stop==false){	
-			output.open();
 			//prompt user input
 			System.out.print("\nRecipient: ");
 			String recipient = (";"+input.next());
@@ -29,12 +28,14 @@ public class smtpClient {
 			//Output to server
 		   	output.println(recipient + title + message);
 			output.flush();
-		   	output.close();
-		   
+		   			   
 			//prompt user stop loop
 		   	System.out.println("\nSend another Email? (Y/N)");
 			newEmail= input.next().charAt(0);
-			if(newEmail == 'N' || newEmail == 'n')	stop = true;
+			if(newEmail == 'N' || newEmail == 'n'){
+				stop = true;
+				output.close();
+			}
 		}
 
 		System.out.println("\n\nDisconnected\n");
