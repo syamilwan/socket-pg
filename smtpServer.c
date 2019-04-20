@@ -98,7 +98,8 @@ int main(){
 				    stop=true;
 			}while(stop==false);
 			printf("\n");
-			strcat(filename,recipient,title);
+			strcat(filename,recipient);
+			strcat(filename,title);
 			//creating new file and writes into it
 			fp = fopen("filename", "w");
 			fprintf(fp, recipient+";"+title+";"+message);
