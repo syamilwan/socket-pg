@@ -73,8 +73,8 @@ int main(){
 void createFile(char data[MAX]){
 	FILE *fp; //file pointer
 	char fileTitle[MAX];
-	
-        for(int i=0;i<strlen(data);i++)
+	int i;
+        for(i=0;i<strlen(data);i++)
         {
             printf("%c",data[i]);
         }
