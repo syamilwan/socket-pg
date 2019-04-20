@@ -65,9 +65,9 @@ int main(){
 			//FILE *fp; //file pointer
 			char fileTitle[MAX];
 			int i;
-			for(i=0;i<strlen(data);i++)
+			for(i=0;i<strlen(recv_data);i++)
 			{
-			    printf("%c",data[i]);
+			    printf("%c",recv_data[i]);
 			}
 			printf("\n");
 
