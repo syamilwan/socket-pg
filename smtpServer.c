@@ -7,7 +7,7 @@
 #include <netinet/in.h>
 #include <unistd.h>
 
-#define MAX 100
+#define MAX 111
 #define PORT 999
 
 int main(){
@@ -15,7 +15,7 @@ int main(){
 	struct sockaddr_in server, client;
 	char send_data[MAX];
 	char recv_data[MAX];	
-
+	
 	//Create socket for connection
 	sockfd = socket(AF_INET, SOCK_STREAM, 0);
 	if(sockfd == -1){	
@@ -50,21 +50,41 @@ int main(){
 	}
 			
 	for(;;){
-			
 		connfd = accept(sockfd, (struct sockaddr*)&client, &msg_size);
 		//Read from client
 		memset(recv_data, 0, sizeof(recv_data));
 		if(recv(connfd, recv_data, sizeof(recv_data), 0) < 0){
 			printf("No message received!!!\n");
-			exit(1);
+			//exit(1);
 		}
 		else{
 			//Print message from client
 			printf("\nFrom client: %s", recv_data);
+			
+			//inserting data into a file by creating a new one
+			createFile(recv_data);
 		}
 	}
 	printf("\nClosing connection....\n");
 	close(sockfd);
-
 	return 0;
 }
+
+void createFile(char data[MAX]){
+	FILE *fp; //file pointer
+	char fileTitle[MAX];
+	
+        for(int i=0;i<strlen(data);i++)
+        {
+            printf("%c",data[i]);
+        }
+        printf("\n");
+	
+	//creating new file and writes into it
+	fp = fopen( +".txt", "w");
+	fprintf(fp, data);
+}
+				
+				
+				
+				
