@@ -51,7 +51,7 @@ int main(int argc, char const *argv[]){
 	for(;;){
 		//Read from client
 		int data;
-		memset(buffer, 0, sizeof(recv_data));
+		memset(buffer, 0, sizeof(buffer));
 		if(recv(server_fd, buffer, sizeof(buffer), 0) < 0){
 			printf("No message received!!!\n");
 			exit(1);
