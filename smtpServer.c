@@ -102,7 +102,7 @@ int main(){
 			//combine and sort strings
 			strcat(filename,recipient);
 			strcat(filename,title);
-			
+			strcat(filename,".txt");
 			strcat(content,recipient);
 			strcat(content,";");
 			strcat(content,title);
@@ -110,8 +110,8 @@ int main(){
 			strcat(content,message);
 			strcat(content,";");
 			//creating new file and writes into it
-			fp = fopen("filename", "w");
-			fprintf(fp, recipient+";"+title+";"+message);
+			fp = fopen(filename, "w");
+			fprintf(fp, content);
 			fclose(fp);
 		}
 	}
