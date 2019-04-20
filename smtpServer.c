@@ -26,7 +26,7 @@ int main(){
 	//Assign IP and PORT
 	memset(&server, 0, sizeof(server));
 	server.sin_family = AF_INET;
-	server.sin_addr.s_addr = inet_addr("192.168.182.128");
+	server.sin_addr.s_addr = inet_addr("192.168.43.4");
 	server.sin_port = htons(PORT);
 	 
 	//Binding socket
