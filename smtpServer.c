@@ -17,7 +17,7 @@ int main(int argc, char const *argv[]){
 	int addrlen = sizeof(address); 
 	char buffer[1024] = {0}; 
 	char *hello = "Msg from Server: \nConnected"; 
-	char recv_data[1042] = {0};
+	char recv_data[100];
 
 	// Creating socket file descriptor 
 	if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0) { 
