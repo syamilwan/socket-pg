@@ -15,7 +15,7 @@ int main(){
 	struct sockaddr_in server, client;
 	char send_data[MAX];
 	char recv_data[MAX];	
-	
+	FILE *fp; //file pointer
 	//Create socket for connection
 	sockfd = socket(AF_INET, SOCK_STREAM, 0);
 	if(sockfd == -1){	
@@ -61,19 +61,47 @@ int main(){
 			//Print message from client
 			printf("\nFrom client: %s", recv_data);
 			
-			//inserting data into a file by creating a new one
-			//FILE *fp; //file pointer
-			char fileTitle[MAX];
-			int i;
-			for(i=0;i<strlen(recv_data);i++)
-			{
-			    printf("%c",recv_data[i]);
-			}
+			//inserting data into a new file
+			char recipient[MAX], title[MAX], message[MAX];
+			int i=0, j=0;
+			bool stop=false;
+			do{
+			    if(recv_data[i]!='.'){
+				    printf("Recipient: %c",recv_data[i]);
+				    recipient[j] = recv_data[i];
+				    i++,j++;
+			    }
+			    else
+				    stop=true;
+			}while(stop==false);
+				
+			printf("\n");j=0;stop=false;
+			do{
+			    if(recv_data[i]!=','){
+				    printf("Recipient: %c",recv_data[i]);
+				    recipient[j] = recv_data[i];
+				    i++,j++;
+			    }
+			    else
+				    stop=true;
+			}while(stop==false);
+			
+			printf("\n");j=0;stop=false;
+			do{
+			    if(recv_data[i]!=';'){
+				    printf("Recipient: %c",recv_data[i]);
+				    recipient[j] = recv_data[i];
+				    i++,j++;
+			    }
+			    else
+				    stop=true;
+			}while(stop==false);
 			printf("\n");
-
+			
 			//creating new file and writes into it
-			//fp = fopen(".txt", "w");
-			//fprintf(fp, data);
+			fp = fopen(recipient+title+".txt", "w");
+			fprintf(fp, recipient+";"+title+";"+message);
+			fclose(fp);
 		}
 	}
 	printf("\nClosing connection....\n");
