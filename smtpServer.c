@@ -7,8 +7,7 @@
 #define PORT 25
 
 int main(int argc, char const *argv[]){ 	
-	
-  setbuf(stdout,NULL);
+	setbuf(stdout,NULL);
 
 	int server_fd, new_socket, valread; 
 	struct sockaddr_in address; 
@@ -28,31 +27,31 @@ int main(int argc, char const *argv[]){
 	address.sin_addr.s_addr = INADDR_ANY; 
 	address.sin_port = htons( PORT ); 
 
-	printf("\t***Socket is open");
+	printf("\t***Server socket open");
 
 	// Forcefully attaching socket to the port 25
 	if (bind(server_fd, (struct sockaddr *)&address,sizeof(address))<0) { 
 	   perror("bind failed"); 
 	   exit(EXIT_FAILURE); 
 	} 
-	    
+	
 	if (listen(server_fd, 3) < 0) { 
 	     perror("listen"); 
 	     exit(EXIT_FAILURE); 
 	} 
 
-  if ((new_socket = accept(server_fd, (struct sockaddr *)&address, (socklen_t*)&addrlen))<0) { 
+	if ((new_socket = accept(server_fd, (struct sockaddr *)&address, (socklen_t*)&addrlen))<0) { 
 	     perror("accept"); 
 	     exit(EXIT_FAILURE); 
 	} 
-
+	
 	valread = read(new_socket , buffer, 1024); 
 	
 	printf("%s\n",buffer); 
-	printf("\n\t***Socket closed\n\n");
+	printf("\n\t***Server socket closed\n\n");
 	printf("*****************************************************\n\n\n");	
-
-	send(new_socket , hello , strlen(hello) , 0 ); 
+	
+	//send(new_socket , hello , strlen(hello) , 0 ); 
 
 	return 0; 
 }
