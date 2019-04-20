@@ -18,12 +18,13 @@ public class smtpClient {
 		do{	PrintWriter output = new PrintWriter(sock.getOutputStream(),true);
 			//Output to server
 			System.out.print("\nRecipient: ");
-			output.println(input.next());
+			String recipient = ("\n ")input.next();
 			System.out.print("\nTitle: ");
-			output.println(input.next());
+			String title = ("\n ")input.next();
 			System.out.print("\nMessages: ");
-			output.println(input.next());
+			String message = ("\n ")input.next();
 			
+		   	output.println(recipient + title + message);
 			output.flush();
 		   	output.close();
 			//prompt stop
