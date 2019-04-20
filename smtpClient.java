@@ -12,12 +12,12 @@ public class smtpClient {
 	try {
 		Socket sock = new Socket(HOSTNAME, PORT_NUMBER);
 		Scanner input = new Scanner(System.in);
-		
+		PrintWriter output = new PrintWriter(sock.getOutputStream(),true);
 		//BufferedReader in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
 		System.out.println("\n\nConnected\n");
 		
 		while(stop==false){	
-			PrintWriter output = new PrintWriter(sock.getOutputStream(),true);
+			output.open();
 			//prompt user input
 			System.out.print("\nRecipient: ");
 			String recipient = (";"+input.next());
