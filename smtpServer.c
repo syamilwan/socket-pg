@@ -62,29 +62,25 @@ int main(){
 			printf("\nFrom client: %s", recv_data);
 			
 			//inserting data into a file by creating a new one
-			createFile(recv_data);
+			//FILE *fp; //file pointer
+			char fileTitle[MAX];
+			int i;
+			for(i=0;i<strlen(data);i++)
+			{
+			    printf("%c",data[i]);
+			}
+			printf("\n");
+
+			//creating new file and writes into it
+			//fp = fopen(".txt", "w");
+			//fprintf(fp, data);
 		}
 	}
 	printf("\nClosing connection....\n");
 	close(sockfd);
 	return 0;
 }
-
-void createFile(char data[MAX]){
-	FILE *fp; //file pointer
-	char fileTitle[MAX];
-	int i;
-        for(i=0;i<strlen(data);i++)
-        {
-            printf("%c",data[i]);
-        }
-        printf("\n");
-	
-	//creating new file and writes into it
-	fp = fopen( +".txt", "w");
-	fprintf(fp, data);
-}
-				
+		
 				
 				
 				
