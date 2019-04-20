@@ -11,7 +11,6 @@ public class smtpClient {
     	//Attempt to connect
 	try {
 		Socket sock = new Socket(HOSTNAME, PORT_NUMBER);
-		PrintWriter output = new PrintWriter(sock.getOutputStream(),true);
 		Scanner input = new Scanner(System.in);
 		//BufferedReader in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
 		System.out.println("\n\nConnected\n");
@@ -22,6 +21,7 @@ public class smtpClient {
 			output.println(input.next());
 			System.out.print("\nMessages: ");
 			output.println(input.next());
+			PrintWriter output = new PrintWriter(sock.getOutputStream(),true);
 			output.flush();
 			//prompt stop
 		   	System.out.println("\nSend another Email? (Y/N)");
