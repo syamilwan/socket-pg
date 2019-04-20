@@ -16,7 +16,7 @@ public class smtpClient {
 		//BufferedReader in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
 		System.out.println("\n\nConnected\n");
 		
-		while(stop==false){	
+		//while(stop==false){	**removed loop**
 			//prompt user input
 			System.out.print("\nRecipient: ");
 			String recipient = (";"+input.next());
@@ -30,18 +30,18 @@ public class smtpClient {
 			output.flush();
 		   			   
 			//prompt user stop loop
-		   	System.out.println("\nSend another Email? (Y/N)");
+		   	/*System.out.println("\nSend another Email? (Y/N)");
 			newEmail= input.next().charAt(0);
 			if(newEmail == 'N' || newEmail == 'n'){
 				stop = true;
-				output.close();
-			}
-		}
+				
+			}*/ 
+		//}
 
 		System.out.println("\n\nDisconnected\n");
-
-		//in.close();
+		output.close();
 		sock.close();
+		
 	    } 
 	catch(Exception e) {
 		e.printStackTrace();
