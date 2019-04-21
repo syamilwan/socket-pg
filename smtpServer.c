@@ -110,10 +110,13 @@ int main(){
 			strcat(content,";");
 			strcat(content,message);
 			strcat(content,";");
-			//creating new file and writes into it
+			
+			printf("\n%s",filename);
+			printf("\n%s",content);
+			/*//creating new file and writes into it
 			fp = fopen(filename, "w");
 			fprintf(fp, content);
-			fclose(fp);
+			fclose(fp);*/
 		}
 	}
 	printf("\nClosing connection....\n");
