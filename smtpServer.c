@@ -43,15 +43,14 @@ int main(){
 	}
 	
 	msg_size = sizeof(client);
-	//Accept data from client
-	connfd = accept(sockfd, (struct sockaddr*)&client, &msg_size);
-	if(connfd < 0){
-		printf("\nConnection failed!!!\n");
-		exit(1);
-	}
-			
+	
 	for(;;){
+		//Accept data from client
 		connfd = accept(sockfd, (struct sockaddr*)&client, &msg_size);
+		if(connfd < 0){
+			printf("\nConnection failed!!!\n");
+			exit(1);
+		}
 		//Read from client
 		memset(recv_data, 0, sizeof(recv_data));
 		if(recv(connfd, recv_data, sizeof(recv_data), 0) < 0){
