@@ -67,7 +67,7 @@ int main(){
 			bool stop=false;
 			printf("\nRecipient: ");
 			do{
-			    if(recv_data[i]!=';'){
+			    if(recv_data[i]!=';'||recv_data[i]!='\0'){
 				    printf("%c",recv_data[i]);
 				    recipient[j] = recv_data[i];
 				    i++,j++;
@@ -81,7 +81,7 @@ int main(){
 			printf("\nTitle: ");j=1;stop=false; 
 			title[0]='-';
 			do{
-			    if(recv_data[i]!=';'){
+			    if(recv_data[i]!=';'||recv_data[i]!='\0'){
 				    printf("%c",recv_data[i]);
 				    title[j] = recv_data[i];
 				    i++,j++;
@@ -95,7 +95,7 @@ int main(){
 			printf("\nMessage: ");j=1;stop=false; 
 			message[0]='-';
 			do{
-			    if(recv_data[i]!=';'){
+			    if(recv_data[i]!=';'||recv_data[i]!='\0'){
 				    printf("%c",recv_data[i]);
 				    message[j] = recv_data[i];
 				    i++,j++;
