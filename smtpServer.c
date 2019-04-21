@@ -79,7 +79,7 @@ int main(){
 			}while(stop==false);
 				
 			printf("\nTitle: ");j=1;stop=false; 
-			title[0]="-";
+			title[0]='-';
 			do{
 			    if(recv_data[i]!=';'){
 				    printf("%c",recv_data[i]);
@@ -93,7 +93,7 @@ int main(){
 			}while(stop==false);
 			
 			printf("\nMessage: ");j=1;stop=false; 
-			message[0]="-";
+			message[0]='-';
 			do{
 			    if(recv_data[i]!=';'){
 				    printf("%c",recv_data[i]);
