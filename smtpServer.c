@@ -45,6 +45,9 @@ int main(){
 	msg_size = sizeof(client);
 	
 	for(;;){
+		setbuf(stdout,NULL);
+		printf("*****************************************************\n\n");
+		
 		//Accept data from client
 		connfd = accept(sockfd, (struct sockaddr*)&client, &msg_size);
 		if(connfd < 0){
@@ -65,6 +68,7 @@ int main(){
 			char filename[MAX]="", content[MAX]="", recipient[MAX], title[MAX], message[MAX];
 			int i=0, j=0;
 			bool stop=false;
+			memset(recipient, '\0', MAX);
 			printf("\nRecipient: ");
 			do{
 			    if(recv_data[i]!=';'){
@@ -77,7 +81,8 @@ int main(){
 				    i++;
 			    }
 			}while(stop==false);
-				
+			
+			memset(title, '\0', MAX);
 			printf("\nTitle: ");j=1;stop=false; 
 			title[0]='-';
 			do{
@@ -92,6 +97,7 @@ int main(){
 			    }
 			}while(stop==false);
 			
+			memset(message, '\0', MAX);
 			printf("\nMessage: ");j=1;stop=false; 
 			message[0]='-';
 			do{
