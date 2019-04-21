@@ -60,7 +60,7 @@ int main(){
 		}
 		else{
 			//Print message from client
-			printf("\nFrom client: %s", recv_data);
+			printf("\n\n\nNew Mail Received: %s", recv_data);
 			
 			//inserting data into a new file
 			char filename[MAX]="", content[MAX]="", recipient[MAX], title[MAX], message[MAX];
@@ -124,15 +124,8 @@ int main(){
 			strcat(filename,recipient);
 			strcat(filename,title);
 			strcat(filename,".txt");
-			strcat(content,recipient);
-			strcat(content,";");
-			strcat(content,title);
-			strcat(content,";");
-			strcat(content,message);
-			strcat(content,";");
 			
-			printf("\n%s",filename);
-			printf("\n%s",content);
+			printf("\nMail saved into: %s",filename);
 			/*//creating new file and writes into it
 			fp = fopen(filename, "w");
 			fprintf(fp, content);
