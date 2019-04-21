@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <ctype.h>
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <arpa/inet.h>
@@ -72,6 +73,10 @@ int main(){
 				    recipient[j] = recv_data[i];
 				    i++,j++;
 			    }
+			    else if(isspace(recv_data[i])){
+				    recipient[j] = ' ';
+				    i++,j++;
+			    }
 			    else{
 				    stop=true;
 				    i++;
@@ -86,6 +91,10 @@ int main(){
 				    title[j] = recv_data[i];
 				    i++,j++;
 			    }
+			    else if(isspace(recv_data[i])){
+				    titlet[j] = ' ';
+				    i++,j++;
+			    }
 			    else{
 				    stop=true;
 				    i++;
@@ -98,6 +107,10 @@ int main(){
 			    if(recv_data[i]!=';'){
 				    printf("%c",recv_data[i]);
 				    message[j] = recv_data[i];
+				    i++,j++;
+			    }
+			    else if(isspace(recv_data[i])){
+				    message[j] = ' ';
 				    i++,j++;
 			    }
 			    else{
