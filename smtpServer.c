@@ -73,8 +73,10 @@ int main(){
 				    recipient[j] = recv_data[i];
 				    i++,j++;
 			    }
-			    else
+			    else{
 				    stop=true;
+				    i++;
+			    }
 			}while(stop==false);
 				
 			printf("\nTitle: ");j=0;stop=false;
@@ -84,8 +86,10 @@ int main(){
 				    title[j] = recv_data[i];
 				    i++,j++;
 			    }
-			    else
+			    else{
 				    stop=true;
+				    i++;
+			    }
 			}while(stop==false);
 			
 			printf("\nMessage: ");j=0;stop=false;
@@ -95,8 +99,10 @@ int main(){
 				    message[j] = recv_data[i];
 				    i++,j++;
 			    }
-			    else
+			    else{
 				    stop=true;
+				    i++;
+			    }
 			}while(stop==false);
 			printf("\n");
 			
