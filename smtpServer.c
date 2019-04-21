@@ -108,10 +108,10 @@ int main(){
 			printf("\n"); setbuf(stdout,NULL);
 			
 			//combine and sort strings
-			strcat(filename,recipient);
-			strcat(filename,title);
-			strcat(filename,".txt");
-			
+			strcat(filename,recipient);setbuf(stdout,NULL);
+			strcat(filename,title);setbuf(stdout,NULL);
+			strcat(filename,".txt");setbuf(stdout,NULL);
+			setbuf(stdout,NULL);			
 			printf("\nMail saved into: %s",filename);
 			/*//creating new file and writes into it
 			fp = fopen(filename, "w");
