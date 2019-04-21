@@ -95,15 +95,15 @@ int main(){
 			printf("\nMessage: ");j=1;stop=false; 
 			message[0]='-';
 			do{
-			    if(recv_data[i]!=';'||recv_data[i]!='\0'){
+			    if(recv_data[i]!=';'){
 				    printf("%c",recv_data[i]);
 				    message[j] = recv_data[i];
 				    i++,j++;
 			    }
-			    else{
+			    else if(recv_data[i]=='\0')
 				    stop=true;
-				    i++;
-			    }
+			    else
+				    stop=true;
 			}while(stop==false);
 			printf("\n");
 			
