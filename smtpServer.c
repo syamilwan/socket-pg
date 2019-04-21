@@ -46,7 +46,7 @@ int main(){
 	
 	for(;;){
 		setbuf(stdout,NULL);
-		printf("*****************************************************\n\n");
+		printf("\n\n*****************************************************\n\n");
 		
 		//Accept data from client
 		connfd = accept(sockfd, (struct sockaddr*)&client, &msg_size);
