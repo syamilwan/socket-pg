@@ -19,9 +19,9 @@ public class smtpClient {
 		//while(stop==false){	**removed loop**
 			//prompt user input
 			System.out.print("\nRecipient: ");
-			String recipient = (input.next()+".");
+			String recipient = (input.next()+";");
 			System.out.print("\nTitle: ");
-			String title = (input.next()+",");
+			String title = (input.next()+";");
 			System.out.print("\nMessages: ");
 			String message = (input.next()+";");
 			
