@@ -46,7 +46,7 @@ int main(){
 	
 	for(;;){
 		setbuf(stdout,NULL);
-		printf("\n\n*****************************************************\n\n");
+		printf("\n*****************************************************\n");
 		
 		//Accept data from client
 		connfd = accept(sockfd, (struct sockaddr*)&client, &msg_size);
@@ -120,10 +120,10 @@ int main(){
 			strcat(filename,".txt");
 			setbuf(stdout,NULL);			
 			printf("\nMail saved into: %s",filename);
-			/*//creating new file and writes into it
+			//creating new file and writes into it
 			fp = fopen(filename, "w");
 			fprintf(fp, content);
-			fclose(fp);*/
+			fclose(fp);
 		}
 	}
 	printf("\nClosing connection....\n");
