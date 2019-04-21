@@ -122,7 +122,7 @@ int main(){
 			printf("\nMail saved into: %s",filename);
 			//creating new file and writes into it
 			fp = fopen(filename, "w");
-			fprintf(fp, content);
+			fprintf(fp, recv_data);
 			fclose(fp);
 		}
 	}
