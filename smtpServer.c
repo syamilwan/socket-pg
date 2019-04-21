@@ -68,7 +68,7 @@ int main(){
 			bool stop=false;
 			printf("\nRecipient: ");
 			do{
-			    if(recv_data[i]!='.'){
+			    if(recv_data[i]!=';'){
 				    printf("%c",recv_data[i]);
 				    recipient[j] = recv_data[i];
 				    i++,j++;
@@ -79,7 +79,7 @@ int main(){
 				
 			printf("\nTitle: ");j=0;stop=false;
 			do{
-			    if(recv_data[i]!=','){
+			    if(recv_data[i]!=';'){
 				    printf("%c",recv_data[i]);
 				    title[j] = recv_data[i];
 				    i++,j++;
