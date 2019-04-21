@@ -92,7 +92,7 @@ int main(){
 				    i++,j++;
 			    }
 			    else if(isspace(recv_data[i])){
-				    titlet[j] = ' ';
+				    title[j] = ' ';
 				    i++,j++;
 			    }
 			    else{
