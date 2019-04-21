@@ -63,7 +63,7 @@ int main(){
 			printf("\nFrom client: %s", recv_data);
 			
 			//inserting data into a new file
-			char filename[MAX], content[MAX], recipient[MAX], title[MAX], message[MAX];
+			char filename[MAX]="", content[MAX]="", recipient[MAX], title[MAX], message[MAX];
 			int i=0, j=0;
 			bool stop=false;
 			printf("\nRecipient: ");
