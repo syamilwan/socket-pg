@@ -105,7 +105,7 @@ int main(){
 			    else
 				    stop=true;
 			}while(stop==false);
-			printf("\n");
+			printf("\n"); setbuf(stdout,NULL);
 			
 			//combine and sort strings
 			strcat(filename,recipient);
